@@ -58,13 +58,33 @@ def main():
 main()
 
 def remove_adjacent(nums):
-  return
+    nums2 = []
+    for item in nums:
+        if len(nums2):
+            if nums2[-1] != item:
+                nums2.append(item)
+        else: nums2.append(item)  
+    return nums2
   
+def linear_merge(list1, list2):
+    merged=[]
+    merged=sorted(list1+list2)
+    return merged
+
+    
 def main():
     print 'remove_adjacent'
     test(remove_adjacent([1, 2, 2, 3]), [1, 2, 3])
     test(remove_adjacent([2, 2, 3, 3, 3]), [2, 3])
     test(remove_adjacent([]), [])
+    print
+    print 'linear_merge'
+    test(linear_merge(['aa', 'xx', 'zz'], ['bb', 'cc']),
+        ['aa', 'bb', 'cc', 'xx', 'zz'])
+    test(linear_merge(['aa', 'xx'], ['bb', 'cc', 'zz']),
+        ['aa', 'bb', 'cc', 'xx', 'zz'])
+    test(linear_merge(['aa', 'aa'], ['aa', 'bb', 'bb']),
+        ['aa', 'aa', 'aa', 'bb', 'bb'])
 
 main()
 
