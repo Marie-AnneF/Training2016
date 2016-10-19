@@ -88,3 +88,78 @@ def main():
 
 main()
 
+def donuts(count):
+    if count >= 10 :
+        s='Number of donuts: many'
+    else: 
+        s='Number of donuts: '+ str(count)
+    return s
+    
+def both_ends(s):
+    if len(s) <= 2 :
+        s2=""
+    else:
+        s2= s[:2:]+ s[-2]+s[-1]
+    return s2
+
+
+def fix_start(s):
+    s2 = s.replace(s[0],"*")
+    s3= s2.replace("*",s[0],1)
+    return s3
+
+def mix_up(a, b):
+    s2 = a.replace(a[0:2],b[0:2]) + ' ' + b.replace(b[0:2],a[0:2])
+    return s2
+    
+    
+def main():
+    print 'donuts'
+    # Each line calls donuts, compares its result to the expected for that call.
+    test(donuts(4), 'Number of donuts: 4')
+    test(donuts(9), 'Number of donuts: 9')
+    test(donuts(10), 'Number of donuts: many')
+    test(donuts(99), 'Number of donuts: many')
+
+    print
+    print 'both_ends'
+    test(both_ends('spring'), 'spng')
+    test(both_ends('Hello'), 'Helo')
+    test(both_ends('a'), '')
+    test(both_ends('xyz'), 'xyyz')
+
+  
+    
+    print
+    print 'fix_start'
+    test(fix_start('babble'), 'ba**le')
+    test(fix_start('aardvark'), 'a*rdv*rk')
+    test(fix_start('google'), 'goo*le')
+    test(fix_start('donut'), 'donut')
+
+    print
+    print 'mix_up'
+    test(mix_up('mix', 'pod'), 'pox mid')
+    test(mix_up('dog', 'dinner'), 'dig donner')
+    test(mix_up('gnash', 'sport'), 'spash gnort')
+    test(mix_up('pezzy', 'firm'), 'fizzy perm')
+
+main()
+
+def verbing(s):
+    if len(s) >= 3:
+        if "ing" in s[len(s)-3:len(s)]:
+            return s+"ly"
+        else:
+            return s+"ing"
+    else :
+        return s
+
+def main():
+    print 'verbing'
+    test(verbing('hail'), 'hailing')
+    test(verbing('swiming'), 'swimingly')
+    test(verbing('do'), 'do')
+
+main()
+
